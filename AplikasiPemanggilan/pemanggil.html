@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard Pemanggil - Lakukan panggilan ke penerima">
+  <title>Dashboard Pemanggil | Aplikasi Pemanggilan</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="caller-theme">
+  <div class="app-container">
+    <div class="dashboard">
+      <!-- Dashboard Header -->
+      <header class="dashboard-header">
+        <div class="dashboard-brand">
+          <div class="dashboard-brand-icon">📲</div>
+          <div>
+            <div class="dashboard-brand-text">Aplikasi Pemanggilan</div>
+            <div class="dashboard-brand-role">Dashboard Pemanggil</div>
+          </div>
+        </div>
+        <a href="index.html" class="btn-back" id="btn-back">
+          ← Kembali
+        </a>
+      </header>
+
+      <!-- Status Cards -->
+      <div class="status-grid">
+        <div class="status-card">
+          <div class="status-card-label">Status Anda</div>
+          <div class="status-card-value">
+            <span class="status-dot online"></span>
+            Online
+          </div>
+        </div>
+        <div class="status-card">
+          <div class="status-card-label">Status Penerima</div>
+          <div class="status-card-value" id="receiver-status">
+            <span class="status-dot offline" id="receiver-dot"></span>
+            <span id="receiver-status-text">Offline</span>
+          </div>
+        </div>
+        <div class="status-card">
+          <div class="status-card-label">Total Panggilan</div>
+          <div class="status-card-value" id="total-calls">0</div>
+        </div>
+      </div>
+
+      <!-- Caller Name Settings -->
+      <div class="settings-panel" id="settings-panel">
+        <h3 class="settings-title">👤 Pengaturan Nama</h3>
+        <div class="settings-form" id="settings-form">
+          <div class="settings-input-wrapper">
+            <input 
+              type="text" 
+              class="settings-input" 
+              id="caller-name-input" 
+              placeholder="Masukkan nama Anda..." 
+              maxlength="30"
+              autocomplete="off"
+            >
+          </div>
+          <button class="settings-btn" id="save-name-btn" type="button">
+            💾 Simpan
+          </button>
+        </div>
+        <div class="caller-name-display" id="caller-name-display">
+          <div class="caller-name-avatar" id="caller-name-avatar">?</div>
+          <div class="caller-name-info">
+            <div class="caller-name-label">Nama Pemanggil</div>
+            <div class="caller-name-value" id="caller-name-value">—</div>
+          </div>
+          <button class="caller-name-edit" id="edit-name-btn" type="button">✏️ Ubah</button>
+        </div>
+      </div>
+
+      <!-- Call Button Section -->
+      <div class="call-section">
+        <div class="call-btn-wrapper">
+          <button class="call-btn" id="call-btn" title="Tekan untuk memanggil">
+            📞
+          </button>
+          <div class="call-ripple" id="ripple-1"></div>
+          <div class="call-ripple" id="ripple-2"></div>
+          <div class="call-ripple" id="ripple-3"></div>
+        </div>
+        <p class="call-status-text" id="call-status-text">
+          Tekan tombol untuk memanggil
+        </p>
+      </div>
+
+      <!-- Call Log -->
+      <div class="call-log">
+        <h3 class="call-log-title">📋 Riwayat Panggilan</h3>
+        <ul class="call-log-list" id="call-log-list">
+          <li class="call-log-empty" id="call-log-empty">Belum ada riwayat panggilan</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="js/pemanggil.js"></script>
+</body>
+</html>

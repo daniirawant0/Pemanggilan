@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard Penerima - Terima panggilan dari pemanggil">
+  <title>Dashboard Penerima | Aplikasi Pemanggilan</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="receiver-theme">
+  <div class="app-container">
+    <div class="dashboard">
+      <!-- Dashboard Header -->
+      <header class="dashboard-header">
+        <div class="dashboard-brand">
+          <div class="dashboard-brand-icon">🔔</div>
+          <div>
+            <div class="dashboard-brand-text">Aplikasi Pemanggilan</div>
+            <div class="dashboard-brand-role">Dashboard Penerima</div>
+          </div>
+        </div>
+        <a href="index.html" class="btn-back" id="btn-back">
+          ← Kembali
+        </a>
+      </header>
+
+      <!-- Status Cards -->
+      <div class="status-grid">
+        <div class="status-card">
+          <div class="status-card-label">Status Anda</div>
+          <div class="status-card-value">
+            <span class="status-dot online"></span>
+            Online
+          </div>
+        </div>
+        <div class="status-card">
+          <div class="status-card-label">Status Pemanggil</div>
+          <div class="status-card-value" id="caller-status">
+            <span class="status-dot offline" id="caller-dot"></span>
+            <span id="caller-status-text">Offline</span>
+          </div>
+        </div>
+        <div class="status-card">
+          <div class="status-card-label">Panggilan Diterima</div>
+          <div class="status-card-value" id="total-received">0</div>
+        </div>
+      </div>
+
+      <!-- Receiver Section -->
+      <div class="receiver-section">
+        <!-- Idle State -->
+        <div class="receiver-idle" id="receiver-idle">
+          <div class="receiver-idle-icon">🎧</div>
+          <p class="receiver-idle-text">Menunggu panggilan masuk...</p>
+          <p class="receiver-idle-sub">Anda akan menerima notifikasi saat ada panggilan</p>
+        </div>
+
+        <!-- Incoming Call State -->
+        <div class="incoming-call" id="incoming-call">
+          <div class="incoming-call-icon" id="incoming-call-icon">📞</div>
+          <div class="incoming-caller-avatar" id="incoming-caller-avatar" style="display:none;"></div>
+          <div class="incoming-caller-name" id="incoming-caller-name" style="display:none;"></div>
+          <h2 class="incoming-call-title">Panggilan Masuk!</h2>
+          <p class="incoming-call-sub" id="incoming-call-sub">Seseorang sedang memanggil Anda</p>
+          <div class="incoming-call-timer" id="call-timer">00:00</div>
+          <div class="incoming-call-actions">
+            <button class="btn-answer" id="btn-answer" title="Jawab panggilan">
+              ✅
+            </button>
+            <button class="btn-reject" id="btn-reject" title="Tolak panggilan">
+              ❌
+            </button>
+          </div>
+        </div>
+
+        <!-- Answered State -->
+        <div class="incoming-call" id="answered-state" style="display:none;">
+          <div class="incoming-call-icon" id="answered-icon" style="animation: ring-glow 2s ease-in-out infinite; border-color: var(--accent-receiver);">
+            🤙
+          </div>
+          <h2 class="incoming-call-title">Panggilan Terhubung</h2>
+          <p class="incoming-call-sub" id="answered-call-sub">Panggilan sedang berlangsung</p>
+          <div class="incoming-call-timer" id="connected-timer">00:00</div>
+          <div class="incoming-call-actions">
+            <button class="btn-reject" id="btn-end" title="Akhiri panggilan" style="width: 56px; height: 56px;">
+              📵
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call Log -->
+      <div class="call-log">
+        <h3 class="call-log-title">📋 Riwayat Panggilan</h3>
+        <ul class="call-log-list" id="call-log-list">
+          <li class="call-log-empty" id="call-log-empty">Belum ada riwayat panggilan</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Full-screen notification overlay -->
+  <div class="notification-overlay" id="notification-overlay">
+    <div class="incoming-call active">
+      <div class="incoming-call-icon">📞</div>
+      <div class="incoming-caller-avatar" id="overlay-caller-avatar" style="display:none;"></div>
+      <div class="incoming-caller-name" id="overlay-caller-name" style="display:none;"></div>
+      <h2 class="incoming-call-title">Panggilan Masuk!</h2>
+      <p class="incoming-call-sub" id="overlay-call-sub">Seseorang sedang memanggil Anda</p>
+      <div class="incoming-call-actions" style="margin-top: 2rem;">
+        <button class="btn-answer" id="overlay-answer" title="Jawab">✅</button>
+        <button class="btn-reject" id="overlay-reject" title="Tolak">❌</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/penerima.js"></script>
+</body>
+</html>
